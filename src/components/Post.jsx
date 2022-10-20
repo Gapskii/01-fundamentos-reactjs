@@ -4,19 +4,21 @@ import styles from './Post.module.css';
 
 
 
-export function Post() {
+export function Post(author, publishedAt) {
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar src="https://github.com/gapskii.png" />
+          <Avatar src={author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>Mateus Gapski</strong>
-            <span>Web Developer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
 
-        <time title='10 de Outubro às 10:15h' dateTime='2022-10-10 10:15:30'>Publicado há 1h</time>
+        <time title='10 de Outubro às 10:15h' dateTime='2022-10-10 10:15:30'>
+          {publishedAt.toString()}
+        </time>
       </header>
 
       <div className={styles.content}>

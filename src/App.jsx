@@ -9,17 +9,32 @@ import './global.css'
 const posts = [
   {
     id: 1,
-    author: [
+    author: {
       avatarUrl: 'https://github.com/gapskii.png',
       name: 'Mateus Gapski',
       role: 'Web Developer'
-    ]
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare', },
+    ],
+  publishedAt: new Date('2022-05-03 20:00:00'),
   },
-  content: [
-    { type: 'paragraph', content: 'Fala galeraa 👋', },
-    { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀', },
-    { type: 'link', content: 'jane.design/doctorcare', },
-  ],
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/maykbrito.png',
+      name: 'Mayk Brito',
+      role: 'Professor'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare', },
+    ],
+  publishedAt: new Date('2022-05-05 19:00:00'),
+  },
 ];
 
 export function App() {
@@ -30,14 +45,15 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-        <Post 
-            author="Mateus Gapski" 
-            content="lorem ipsun"
-          />
-          <Post 
-            author="Dafheny Pacheco" 
-            content="Amigável"
-          />
+        {posts.map(post => {
+          return (
+            <Post
+              author={post.author}
+              content={post.content}
+              publishedAt={post.publishedAt}
+            />
+          )
+        })}
         </main>
       </div>
     </div>
