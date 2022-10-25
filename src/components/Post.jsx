@@ -1,10 +1,18 @@
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
+
 import styles from './Post.module.css';
 
 
 
-export function Post(author, publishedAt) {
+export function Post({author, publishedAt}) {
+  const publishedDateFormated = new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: 'long',
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(publishedAt);
+
   return (
     <article className={styles.post}>
       <header>
@@ -17,7 +25,7 @@ export function Post(author, publishedAt) {
         </div>
 
         <time title='10 de Outubro às 10:15h' dateTime='2022-10-10 10:15:30'>
-          {publishedAt.toString()}
+          {publishedDateFormated}
         </time>
       </header>
 
